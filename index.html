@@ -1,104 +1,168 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <title>Flavor.tj</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            background: linear-gradient(135deg, #f5f5f5, #e0e0e0);
-        }
-        header {
-            background-color: #3498db;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-        .menu {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            padding: 20px;
-            flex-wrap: wrap;
-        }
-        .card {
-            background: white;
-            border-radius: 15px;
-            padding: 20px;
-            width: 250px;
-            text-align: center;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-            transition: 0.3s;
-        }
-        .card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.25);
-        }
-        .card img {
-            width: 100%;
-            border-radius: 10px;
-        }
-        .order-btn {
-            background-color: #3498db;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            margin: 5px 5px 0 0;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: 0.3s;
-            font-size: 16px;
-        }
-        .order-btn:hover {
-            background-color: #2980b9;
-        }
-        footer {
-            background-color: #3498db;
-            color: white;
-            text-align: center;
-            padding: 10px;
-        }
-        @media (max-width: 600px) {
-            .card { width: 90%; }
-            .menu { flex-direction: column; align-items: center; }
-        }
-    </style>
+<meta charset="UTF-8">
+<title>Flavor.tj</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: linear-gradient(135deg, #f5f5f5, #e0e0e0);
+}
+
+/* Header */
+header {
+    background-color: #3498db;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Меню */
+.menu {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    flex-wrap: wrap;
+}
+
+/* Карточки */
+.card {
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    width: 250px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+}
+
+.card img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+/* Кнопки */
+.order-btn {
+    border: none;
+    padding: 10px 15px;
+    margin: 5px 5px 0 0;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 14px;
+    color: white;
+}
+
+/* Разные цвета */
+.whatsapp { background-color: #25D366; }
+.whatsapp:hover { background-color: #1da851; }
+
+.instagram { background-color: #E1306C; }
+.instagram:hover { background-color: #c92a5f; }
+
+.call { background-color: #2ecc71; }
+.call:hover { background-color: #27ae60; }
+
+/* Footer */
+footer {
+    background-color: #3498db;
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+
+/* Адаптив */
+@media (max-width: 600px) {
+    .card { width: 90%; }
+    .menu { flex-direction: column; align-items: center; }
+}
+</style>
 </head>
+
 <body>
+
 <header>
     <h1>Flavor.tj</h1>
     <p>Пицца • Бургеры • Хот-доги</p>
 </header>
+
 <div class="menu">
+
+    <!-- Пицца -->
     <div class="card">
         <img src="pizza.jpg" alt="Пицца">
         <h2>Пицца</h2>
         <p>Сырная, пепперони, мясная</p>
         <strong>от 70 сомони</strong><br>
-        <a href="https://wa.me/992982408080?text=Я хочу заказать Пиццу" target="_blank"><button class="order-btn">WhatsApp</button></a>
-        <a href="https://instagram.com/flavor.tj" target="_blank"><button class="order-btn">Instagram</button></a>
+
+        <a href="https://wa.me/992982408080?text=Я хочу заказать Пиццу" target="_blank">
+            <button class="order-btn whatsapp">WhatsApp</button>
+        </a>
+
+        <a href="https://instagram.com/flavor.tj" target="_blank">
+            <button class="order-btn instagram">Instagram</button>
+        </a>
+
+        <a href="tel:+992982408080">
+            <button class="order-btn call">Позвонить</button>
+        </a>
     </div>
+
+    <!-- Бургер -->
     <div class="card">
         <img src="burger.jpg" alt="Бургер">
         <h2>Бургер</h2>
         <p>Сочная говядина, сыр</p>
         <strong>от 30 сомони</strong><br>
-        <a href="https://wa.me/992982408080?text=Я хочу заказать Бургер" target="_blank"><button class="order-btn">WhatsApp</button></a>
-        <a href="https://instagram.com/flavor.tj" target="_blank"><button class="order-btn">Instagram</button></a>
+
+        <a href="https://wa.me/992982408080?text=Я хочу заказать Бургер" target="_blank">
+            <button class="order-btn whatsapp">WhatsApp</button>
+        </a>
+
+        <a href="https://instagram.com/flavor.tj" target="_blank">
+            <button class="order-btn instagram">Instagram</button>
+        </a>
+
+        <a href="tel:+992982408080">
+            <button class="order-btn call">Позвонить</button>
+        </a>
     </div>
+
+    <!-- Хот-дог -->
     <div class="card">
         <img src="hotdog.jpg" alt="Хот-дог">
         <h2>Хот-дог</h2>
         <p>Классический и острый</p>
         <strong>от 20 сомони</strong><br>
-        <a href="https://wa.me/992982408080?text=Я хочу заказать Хот-дог" target="_blank"><button class="order-btn">WhatsApp</button></a>
-        <a href="https://instagram.com/flavor.tj" target="_blank"><button class="order-btn">Instagram</button></a>
+
+        <a href="https://wa.me/992982408080?text=Я хочу заказать Хот-дог" target="_blank">
+            <button class="order-btn whatsapp">WhatsApp</button>
+        </a>
+
+        <a href="https://instagram.com/flavor.tj" target="_blank">
+            <button class="order-btn instagram">Instagram</button>
+        </a>
+
+        <a href="tel:+992982408080">
+            <button class="order-btn call">Позвонить</button>
+        </a>
     </div>
+
 </div>
+
 <footer>
     <p>📞 +992 982 40 80 80 | 📍 Душанбе</p>
 </footer>
+
 </body>
 </html>
+
 
