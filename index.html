@@ -16,14 +16,14 @@
             color: #333;
         }
 
-        /* Шапка */
         header {
-            background-color: #3498db;
-            color: white;
-            padding: 30px 20px;
-            text-align: center;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
+    background-color: #e67e22; /* Насыщенный оранжевый */
+    color: white;
+    padding: 30px 20px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
 
         header h1 { margin: 0; font-size: 2.5rem; }
         header p { margin: 10px 0 0; opacity: 0.9; }
@@ -41,16 +41,17 @@
         }
 
         .tab-btn {
-            border: 2px solid #3498db;
-            padding: 10px 20px;
-            border-radius: 30px;
-            background: white;
-            color: #3498db;
-            cursor: pointer;
-            font-weight: 700;
-            transition: 0.3s;
-            font-size: 14px;
-        }
+    border: 2px solid #e67e22; /* Оранжевая рамка */
+    color: #ff9800;            /* Оранжевый текст */
+    /* ...остальное без изменений... */
+}
+
+.tab-btn.active {
+    background: #ff9800;      /* Оранжевый фон */
+    color: white;
+    box-shadow: 0 4px 15px rgba(255, 152, 0, 0.4); /* Оранжевое свечение */
+}
+
 
         .tab-btn.active {
             background: #3498db;
@@ -101,7 +102,13 @@
 
         .card h2 { font-size: 1.2rem; margin: 10px 0; }
         .card p { color: #777; font-size: 0.9rem; height: 40px; }
-        .card strong { display: block; margin: 15px 0; font-size: 1.2rem; color: #2c3e50; }
+        .card strong {
+    display: block;
+    margin: 15px 0;
+    font-size: 1.2rem;
+    color: #e67e22; /* Темно-оранжевый цвет для цены */
+}
+
 
         /* Кнопки заказать */
         .order-group {
@@ -129,13 +136,13 @@
         .btn:hover { opacity: 0.8; }
 
         /* Футер */
-        footer {
-            background: #2c3e50;
-            color: white;
-            text-align: center;
-            padding: 20px;
-            margin-top: 50px;
-        }
+       footer {
+    background: #232323; /* Глубокий темный цвет, хорошо сочетается с оранжевым */
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 50px;
+}
 
         /* Плавающая кнопка WA */
         .wa-float {
@@ -261,6 +268,7 @@
 
 </body>
 </html>
+
 
 
 
