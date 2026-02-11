@@ -1,221 +1,265 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<title>Flavor.tj</title>
-<!-- Подключение Google Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flavor.tj — Вкусная еда в Душанбе</title>
+    
+    <!-- Подключаем современный шрифт -->
+    <link href="https://fonts.googleapis.com" rel="stylesheet">
 
-<style>
-body {
-    font-family: 'Montserrat', sans-serif; 
-    margin: 0;
-    background: linear-gradient(135deg, #f5f5f5, #e0e0e0);
-}
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            background: #f8f9fa;
+            color: #333;
+        }
 
-/* Header */
-header {
-    background-color: #3498db;
-    color: white;
-    padding: 20px;
-    text-align: center;
-}
+        /* Шапка */
+        header {
+            background-color: #3498db;
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
 
-/* Меню */
-.menu {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    padding: 20px;
-    flex-wrap: wrap;
-}
+        header h1 { margin: 0; font-size: 2.5rem; }
+        header p { margin: 10px 0 0; opacity: 0.9; }
 
-/* Карточки */
-.card {
-    background: white;
-    border-radius: 15px;
-    padding: 20px;
-    width: 250px;
-    text-align: center;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-    transition: 0.3s;
-}
+        /* Навигация (Табы) */
+        .tabs-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            padding: 25px 10px;
+            position: sticky;
+            top: 0;
+            background: #f8f9fa;
+            z-index: 100;
+        }
 
-.card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.25);
-}
+        .tab-btn {
+            border: 2px solid #3498db;
+            padding: 10px 20px;
+            border-radius: 30px;
+            background: white;
+            color: #3498db;
+            cursor: pointer;
+            font-weight: 700;
+            transition: 0.3s;
+            font-size: 14px;
+        }
 
-.card img {
-    width: 100%;
-    border-radius: 10px;
-}
+        .tab-btn.active {
+            background: #3498db;
+            color: white;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.4);
+        }
 
-/* Кнопки */
-.order-btn {
-    border: none;
-    padding: 10px 15px;
-    margin: 5px 5px 0 0;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: 0.3s;
-    font-size: 14px;
-    color: white;
-}
+        /* Контент категорий */
+        .category-section {
+            display: none; /* Скрыто по умолчанию */
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 25px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            animation: fadeIn 0.5s ease;
+        }
 
-/* Разные цвета */
-.whatsapp { background-color: #25D366; }
-.whatsapp:hover { background-color: #1da851; }
+        .category-section.active { display: flex; }
 
-.instagram { background-color: #E1306C; }
-.instagram:hover { background-color: #c92a5f; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
-.call { background-color: #2ecc71; }
-.call:hover { background-color: #27ae60; }
+        /* Карточки товаров */
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 15px;
+            width: 280px;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            transition: 0.3s;
+            border: 1px solid #eee;
+        }
 
-/* Footer */
-footer {
-    background-color: #3498db;
-    color: white;
-    text-align: center;
-    padding: 15px;
-}
+        .card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
 
-/* Адаптив */
-@media (max-width: 600px) {
-    .card { width: 90%; }
-    .menu { flex-direction: column; align-items: center; }
-}
-.whatsapp-float {
-    position: fixed;
-    width: 60px;
-    height: 60px;
-    bottom: 20px;
-    right: 20px;
-    background-color: #25D366;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-decoration: none;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-    transition: 0.3s;
-    z-index: 1000;
-}
+        .card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 15px;
+        }
 
-.whatsapp-float:hover {
-    transform: scale(1.1);
-}
-/* Анимация появления */
-@keyframes fadeUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
+        .card h2 { font-size: 1.2rem; margin: 10px 0; }
+        .card p { color: #777; font-size: 0.9rem; height: 40px; }
+        .card strong { display: block; margin: 15px 0; font-size: 1.2rem; color: #2c3e50; }
 
-.card {
-    animation: fadeUp 0.8s ease forwards;
-}
+        /* Кнопки заказать */
+        .order-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
 
-/* Небольшая задержка для эффекта */
-.card:nth-child(1) { animation-delay: 0.2s; }
-.card:nth-child(2) { animation-delay: 0.4s; }
-.card:nth-child(3) { animation-delay: 0.6s; }
+        .btn {
+            border: none;
+            padding: 10px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+            transition: 0.2s;
+        }
 
-</style>
+        .btn-wa { background: #25D366; }
+        .btn-inst { background: #E1306C; }
+        .btn-call { background: #2ecc71; grid-column: span 2; margin-top: 5px; }
+        
+        .btn:hover { opacity: 0.8; }
+
+        /* Футер */
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+        }
+
+        /* Плавающая кнопка WA */
+        .wa-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #25D366;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+        }
+
+        @media (max-width: 600px) {
+            .card { width: 100%; }
+            .tab-btn { padding: 8px 15px; font-size: 12px; }
+        }
+    </style>
 </head>
-
 <body>
 
 <header>
     <h1>Flavor.tj</h1>
-    <p>Пицца • Бургеры • Хот-доги</p>
+    <p>Доставка вкуса в Душанбе</p>
 </header>
 
-<div class="menu">
+<!-- Кнопки выбора категорий -->
+<div class="tabs-container">
+    <button class="tab-btn active" onclick="showCategory('pizza')">🍕 Пицца</button>
+    <button class="tab-btn" onclick="showCategory('burgers')">🍔 Бургеры</button>
+    <button class="tab-btn" onclick="showCategory('hotdogs')">🌭 Хот-доги</button>
+</div>
 
-    <!-- Пицца -->
+<!-- СЕКЦИЯ: ПИЦЦА -->
+<div id="pizza" class="category-section active">
     <div class="card">
-        <img src="pizza.jpg" alt="Пицца">
-        <h2>Пицца</h2>
-        <p>Сырная, пепперони, мясная</p>
-        <strong>от 70 сомони</strong><br>
-
-        <a href="https://wa.me/992982408080?text=Я хочу заказать Пиццу" target="_blank">
-            <button class="order-btn whatsapp">WhatsApp</button>
-        </a>
-
-        <a href="https://instagram.com/flavor.tj" target="_blank">
-            <button class="order-btn instagram">Instagram</button>
-        </a>
-
-        <a href="tel:+992982408080">
-            <button class="order-btn call">Позвонить</button>
-        </a>
+        <img src="pizza1.jpg" alt="Пепперони">
+        <h2>Пепперони</h2>
+        <p>Острые колбаски, моцарелла, соус</p>
+        <strong>75 сомони</strong>
+        <div class="order-group">
+            <a href="https://wa.me Пепперони" class="btn btn-wa">WhatsApp</a>
+            <a href="https://instagram.com" class="btn btn-inst">Instagram</a>
+            <a href="tel:+992982408080" class="btn btn-call">Позвонить</a>
+        </div>
     </div>
-
-    <!-- Бургер -->
     <div class="card">
-        <img src="burger.jpg" alt="Бургер">
-        <h2>Бургер</h2>
-        <p>Сочная говядина, сыр</p>
-        <strong>от 30 сомони</strong><br>
-
-        <a href="https://wa.me/992982408080?text=Я хочу заказать Бургер" target="_blank">
-            <button class="order-btn whatsapp">WhatsApp</button>
-        </a>
-
-        <a href="https://instagram.com/flavor.tj" target="_blank">
-            <button class="order-btn instagram">Instagram</button>
-        </a>
-
-        <a href="tel:+992982408080">
-            <button class="order-btn call">Позвонить</button>
-        </a>
+        <img src="pizza2.jpg" alt="Маргарита">
+        <h2>Маргарита</h2>
+        <p>Томаты, базилик, много сыра</p>
+        <strong>60 сомони</strong>
+        <div class="order-group">
+            <a href="https://wa.me Маргарита" class="btn btn-wa">WhatsApp</a>
+            <a href="https://instagram.com" class="btn btn-inst">Instagram</a>
+            <a href="tel:+992982408080" class="btn btn-call">Позвонить</a>
+        </div>
     </div>
+</div>
 
-    <!-- Хот-дог -->
+<!-- СЕКЦИЯ: БУРГЕРЫ -->
+<div id="burgers" class="category-section">
     <div class="card">
-        <img src="hotdog.jpg" alt="Хот-дог">
-        <h2>Хот-дог</h2>
-        <p>Классический и острый</p>
-        <strong>от 20 сомони</strong><br>
-
-        <a href="https://wa.me/992982408080?text=Я хочу заказать Хот-дог" target="_blank">
-            <button class="order-btn whatsapp">WhatsApp</button>
-        </a>
-
-        <a href="https://instagram.com/flavor.tj" target="_blank">
-            <button class="order-btn instagram">Instagram</button>
-        </a>
-
-        <a href="tel:+992982408080">
-            <button class="order-btn call">Позвонить</button>
-        </a>
+        <img src="burger1.jpg" alt="Чизбургер">
+        <h2>Классик Чиз</h2>
+        <p>Говяжья котлета, чеддер, маринованный огурец</p>
+        <strong>35 сомони</strong>
+        <div class="order-group">
+            <a href="https://wa.me" class="btn btn-wa">WhatsApp</a>
+            <a href="https://instagram.com" class="btn btn-inst">Instagram</a>
+            <a href="tel:+992982408080" class="btn btn-call">Позвонить</a>
+        </div>
     </div>
+</div>
 
+<!-- СЕКЦИЯ: ХОТ-ДОГИ -->
+<div id="hotdogs" class="category-section">
+    <div class="card">
+        <img src="hotdog1.jpg" alt="Датский хот-дог">
+        <h2>Датский хот-дог</h2>
+        <p>Сосиска гриль, хрустящий лук, горчица</p>
+        <strong>22 сомони</strong>
+        <div class="order-group">
+            <a href="https://wa.me хот-дог" class="btn btn-wa">WhatsApp</a>
+            <a href="https://instagram.com" class="btn btn-inst">Instagram</a>
+            <a href="tel:+992982408080" class="btn btn-call">Позвонить</a>
+        </div>
+    </div>
 </div>
 
 <footer>
-    <p>📞 +992 982 40 80 80 | 📍 Душанбе</p>
+    <p>📞 +992 982 40 80 80 | 📍 Душанбе, Таджикистан</p>
 </footer>
-<a href="https://wa.me/992982408080" 
-   class="whatsapp-float" 
-   target="_blank">
-   <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" 
-        width="35" 
-        alt="WhatsApp">
+
+<!-- Плавающая кнопка -->
+<a href="https://wa.me" class="wa-float" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com" width="30" alt="WA">
 </a>
+
+<script>
+    function showCategory(id) {
+        // Убираем активный класс у всех секций
+        document.querySelectorAll('.category-section').forEach(section => {
+            section.classList.remove('active');
+        });
+        // Убираем активный класс у всех кнопок
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+
+        // Показываем нужную секцию
+        document.getElementById(id).classList.add('active');
+        // Делаем нажатую кнопку синей
+        event.currentTarget.classList.add('active');
+    }
+</script>
 
 </body>
 </html>
+
+
 
 
 
